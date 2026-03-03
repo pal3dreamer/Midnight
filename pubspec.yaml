@@ -40,6 +40,9 @@ dependencies:
   flutter_riverpod: ^3.2.1
   date_picker_timeline: ^1.2.6
   google_fonts: ^8.0.2
+  riverpod_annotation: ^4.0.2
+  riverpod_generator: ^4.0.3
+  build_runner: ^2.11.1
 
 dev_dependencies:
   flutter_test:

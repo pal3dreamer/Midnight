@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:task_manager/home/home_screen.dart';
 import 'package:task_manager/navigation/navigation_provider.dart';
-import 'package:task_manager/tasks/add_edit.dart/add_edit_screen.dart';
 import 'package:task_manager/tasks/reminder/reminder_log_screen.dart';
 import 'package:task_manager/tasks/settings/personal_info.dart';
 import 'package:task_manager/tasks/today/today_screen.dart';
+import 'package:task_manager/tasks/widgets/add_edit_task_sheet.dart';
 
 class NavigationScreen extends ConsumerWidget {
   const NavigationScreen({super.key});
@@ -15,11 +15,31 @@ class NavigationScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
   final index = ref.watch(navigationProvider);
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: Colors.black,
+      ),
+      drawer: Drawer(
+        backgroundColor: Color(0xFFb5cff8),
+      ),
       floatingActionButton: FloatingActionButton(
   onPressed: () {
-     ref.read(navigationProvider.notifier).changeIndex(2);
+    showModalBottomSheet(
+    context: context,
+        isScrollControlled: true,
+        enableDrag: true,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+  ),
+        builder: (_) => SizedBox(
+          height: (2 / 3) * MediaQuery.of(context).size.height,
+          child: AddEditTaskSheet(),
+        ),
+    );
   },
   shape: CircleBorder(),
+  backgroundColor: Colors.white,
   child: PhosphorIcon(
     PhosphorIconsRegular.plus,
     color: Colors.black,
@@ -81,11 +101,11 @@ floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             }, icon: PhosphorIcon(PhosphorIconsRegular.folderSimple),
             iconSize: 32,),
             IconButton(onPressed: (){
-              ref.read(navigationProvider.notifier).changeIndex(3);
+              ref.read(navigationProvider.notifier).changeIndex(2);
             }, icon: PhosphorIcon(PhosphorIconsRegular.chatTeardrop),
             iconSize: 32,),
             IconButton(onPressed: (){
-              ref.read(navigationProvider.notifier).changeIndex(4);
+              ref.read(navigationProvider.notifier).changeIndex(3);
             }, icon: PhosphorIcon(PhosphorIconsRegular.user),
             iconSize: 32,),
           ],
@@ -102,10 +122,8 @@ floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     case 1:
       return const TodayScreen();
     case 2:
-      return const AddEditScreen();
-    case 3:
       return const ReminderLogScreen();
-    case 4:
+    case 3:
       return const PersonalInfo();
     default:
       return const HomeScreen();

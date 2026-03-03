@@ -1,19 +1,52 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:task_manager/tasks/task_provider.dart';
+import 'package:task_manager/tasks/widgets/task_card.dart';
+import 'package:task_manager/tasks/task_model.dart';
 
-
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tasks = ref.watch(taskProviderProvider);
+    final notifier = ref.read(taskProviderProvider.notifier);
+    return Scaffold( 
+      /*
+      floatingActionButton: FloatingActionButton(onPressed: () {
 
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  notifier.addTask(
+    Task(
+      id: DateTime.now().toString(),
+      title: "Design Dashboard UI",
+      description: "Create clean task layout",
+      dueDate: DateTime.now(),
+      createdAt: DateTime.now(),
+    ),
+  );
+
+  notifier.addTask(
+    Task(
+      id: DateTime.now().add(const Duration(milliseconds: 1)).toString(),
+      title: "Fix Riverpod State",
+      description: "Test provider rebuild",
+      dueDate: DateTime.now(),
+      createdAt: DateTime.now(),
+    ),
+  );
+
+  notifier.addTask(
+    Task(
+      id: DateTime.now().add(const Duration(milliseconds: 2)).toString(),
+      title: "Add Bottom Sheet Form",
+      description: "Implement modal UI",
+      dueDate: DateTime.now(),
+      createdAt: DateTime.now(),
+    ),
+  );
+}),
+*/
       backgroundColor: Color(0xFF000000),
       body: SafeArea(
 child: Column(
@@ -38,23 +71,35 @@ child: Column(
    child: DatePicker(
                   DateTime.now(),
                   initialSelectedDate: DateTime.now(),
-                  selectionColor: Colors.grey,
+                  selectionColor: Colors.white,
                   selectedTextColor: Colors.black,
 dateTextStyle: TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.w500,
 ),
                   monthTextStyle: TextStyle(
-                    color: Color(0xFF313131),
+                    color: Colors.white,
+                    fontFamily: "DM Sans"
                   ),
                   dayTextStyle: TextStyle(
-                     color: Color(0xFF313131),
+                     color: Colors.white,
+                     fontFamily: "DM Sans"
                   ),
                   width: 60,
                   height: 80,
         )
 )
-)
+),
+Expanded(
+  child: 
+ListView.builder(
+  padding: EdgeInsets.all(20),
+  shrinkWrap: true,
+  itemCount: tasks.length,
+  itemBuilder: (context, index, )
+{
+  return TaskCard(task: tasks[index]);
+}))
 ],
       ),
       )
