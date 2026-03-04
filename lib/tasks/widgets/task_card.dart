@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_manager/tasks/task_model.dart';
-import 'package:task_manager/tasks/task_provider.dart';
 
 class TaskCard extends ConsumerWidget {
   final Task task;
