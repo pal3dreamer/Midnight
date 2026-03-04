@@ -1,3 +1,4 @@
+// defining the db structure goes here
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -15,6 +16,7 @@ class Tasks extends Table {
   DateTimeColumn get updatedAt => dateTime().withDefault(currentDateAndTime)();
   BoolColumn get isSynced =>
   boolean().withDefault(const Constant(false))();
+  DateTimeColumn get dueDate => dateTime().nullable()();
 @override
   Set<Column> get primaryKey => {id};
 }
