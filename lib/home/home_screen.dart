@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_manager/tasks/task_provider.dart';
 import 'package:task_manager/tasks/widgets/task_card.dart';
+// ignore: unused_import
 import 'package:task_manager/tasks/task_model.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -11,9 +12,10 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tasks = ref.watch(taskProviderProvider);
+    // ignore: unused_local_variable
     final notifier = ref.read(taskProviderProvider.notifier);
     return Scaffold( 
-      /*
+  
       floatingActionButton: FloatingActionButton(onPressed: () {
 
   notifier.addTask(
@@ -23,6 +25,7 @@ class HomeScreen extends ConsumerWidget {
       description: "Create clean task layout",
       dueDate: DateTime.now(),
       createdAt: DateTime.now(),
+      priority: TaskPriority.high
     ),
   );
 
@@ -33,6 +36,7 @@ class HomeScreen extends ConsumerWidget {
       description: "Test provider rebuild",
       dueDate: DateTime.now(),
       createdAt: DateTime.now(),
+      priority: TaskPriority.low
     ),
   );
 
@@ -43,11 +47,12 @@ class HomeScreen extends ConsumerWidget {
       description: "Implement modal UI",
       dueDate: DateTime.now(),
       createdAt: DateTime.now(),
+      priority: TaskPriority.medium
     ),
   );
 }),
-*/
-      backgroundColor: Color(0xFF000000),
+
+      backgroundColor: Color(0xFF1b1b1b),
       body: SafeArea(
 child: Column(
   crossAxisAlignment: CrossAxisAlignment.start,

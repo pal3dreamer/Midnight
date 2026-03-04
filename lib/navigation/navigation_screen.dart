@@ -17,7 +17,7 @@ class NavigationScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF1b1b1b),
       ),
       drawer: Drawer(
         backgroundColor: Color(0xFFb5cff8),
@@ -47,7 +47,7 @@ class NavigationScreen extends ConsumerWidget {
 
 ),
 floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      backgroundColor: Color(0xFF000000),
+      backgroundColor: Color(0xFF1b1b1b),
       body: getBottomNavigationWidget(index),
       
       /*
@@ -87,7 +87,7 @@ floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       */
 
       bottomNavigationBar: BottomAppBar(
-        color: Color(0xFF000000),
+        color: Color(0xFF1b1b1b),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
