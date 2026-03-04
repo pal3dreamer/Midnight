@@ -15,7 +15,7 @@ class HomeScreen extends ConsumerWidget {
     // ignore: unused_local_variable
     final notifier = ref.read(taskProviderProvider.notifier);
     return Scaffold( 
-  
+  /*
       floatingActionButton: FloatingActionButton(onPressed: () {
 
   notifier.addTask(
@@ -51,7 +51,7 @@ class HomeScreen extends ConsumerWidget {
     ),
   );
 }),
-
+*/
       backgroundColor: Color(0xFF1b1b1b),
       body: SafeArea(
 child: Column(

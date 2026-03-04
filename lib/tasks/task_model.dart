@@ -12,6 +12,8 @@ class Task {
   final bool isCompleted;
   final DateTime createdAt;
   final TaskPriority priority;
+  final DateTime updatedAt;
+  final bool isDeleted;
 
 const Task({
   required this.id,
@@ -21,10 +23,14 @@ const Task({
   this.isCompleted = false,
   required this.createdAt,
   required this.priority,
+  this.isDeleted = false,
+  required this.updatedAt,
+
+
 });
 
 
-Task copyWith({String? id, String? title, String? description, DateTime? dueDate, bool? isCompleted,DateTime? createdAt, TaskPriority? priority}){
+Task copyWith({String? id, String? title, String? description, DateTime? dueDate, bool? isCompleted,DateTime? createdAt, TaskPriority? priority, DateTime? updatedAt,bool? isDeleted}){
   return Task(
     id: id ?? this.id,
     title: title ?? this.title,
@@ -32,7 +38,9 @@ Task copyWith({String? id, String? title, String? description, DateTime? dueDate
     dueDate: dueDate ?? this.dueDate,
     createdAt: createdAt ?? this.createdAt,
     isCompleted: isCompleted ?? this.isCompleted,
-    priority: priority ?? this.priority
+    priority: priority ?? this.priority,
+    updatedAt: updatedAt ?? this.updatedAt,
+    isDeleted: isDeleted ?? this.isDeleted
   );
 }
 

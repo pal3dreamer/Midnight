@@ -33,7 +33,11 @@ class AddEditTaskSheet extends ConsumerWidget {
               color: Color(0xFF647FC0)))),   
           ],
         ),
-        SizedBox()
+        SizedBox(
+          child: TextFormField(
+            
+          )
+        )
       ],
     ),
     );
